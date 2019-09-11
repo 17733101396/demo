@@ -10,5 +10,10 @@ public class HelloController {
     public String sayHello(){
         return "Hello Jenkins";
     }
+	
+	@RequestMapping("/hello2")
+    public String sayHello2(){
+        return "Hello Jenkins 2";
+    }
 
 }
