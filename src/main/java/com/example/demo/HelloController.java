@@ -13,7 +13,7 @@ public class HelloController {
 	
 	@RequestMapping("/hello2")
     public String sayHello2(){
-        return "Hello Github";
+        return "Hello Github-Jenkins";
     }
 
 }
