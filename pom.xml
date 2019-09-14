@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+        <docker.image.prefix>http://192.168.99.100:5000</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -47,6 +48,39 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.12</version>
+				<configuration>
+					<imageName>registry.cn-shenzhen.aliyuncs.com/mingyi/${project.artifactId}</imageName>
+					<imageTags>
+						<imageTag>${project.parent.version}</imageTag>
+					</imageTags>
+					<serverId>docker-aliyun</serverId>
+					<registryUrl>registry.cn-shenzhen.aliyuncs.com</registryUrl>
+					<dockerDirectory>${project.basedir}/docker</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+					<buildArgs>
+						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
