@@ -61,7 +61,9 @@
 					</imageTags>
 					<serverId>docker-aliyun</serverId>
 					<registryUrl>registry.cn-shenzhen.aliyuncs.com</registryUrl>
-					<dockerDirectory>${project.basedir}/docker</dockerDirectory>
+					<dockerDirectory>${basedir}/docker</dockerDirectory>
+					<dockerHost>https://192.168.99.100:2376</dockerHost>
+					<dockerCertPath>C:\Users\Administrator\.docker\machine\machines\default</dockerCertPath>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
